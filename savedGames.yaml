@@ -1,0 +1,96 @@
+--- !ruby/object:Hangman::Board
+chosenWord: briefness
+wordsGuessed:
+- a
+- d
+- df
+- dsa
+- fdas
+- sa
+wordArray:
+- " _ "
+- " _ "
+- " _ "
+- e
+- " _ "
+- " _ "
+- e
+- " _ "
+- " _ "
+movesLeft: 8
+--- !ruby/object:Hangman::Board
+chosenWord: dough
+wordsGuessed:
+- ds
+- a
+- asd
+wordArray:
+- " _ "
+- " _ "
+- " _ "
+- " _ "
+- " _ "
+movesLeft: 6
+
+--- !ruby/object:Hangman::Board
+chosenWord: reactionary
+wordsGuessed:
+- fdsa
+- as
+- sa
+- s
+- d
+- f
+wordArray:
+- " _ "
+- e
+- a
+- c
+- " _ "
+- " _ "
+- " _ "
+- " _ "
+- a
+- " _ "
+- " _ "
+movesLeft: 6
+
+--- !ruby/object:Hangman::Board
+chosenWord: jitterbugger
+wordsGuessed:
+- s
+- a
+- d
+- f
+- c
+wordArray:
+- " _ "
+- " _ "
+- " _ "
+- " _ "
+- e
+- " _ "
+- " _ "
+- " _ "
+- g
+- g
+- e
+- " _ "
+movesLeft: 11
+
+--- !ruby/object:Hangman::Board
+chosenWord: aliment
+wordsGuessed:
+- f
+- s
+- save
+wordArray:
+- a
+- " _ "
+- " _ "
+- " _ "
+- " _ "
+- " _ "
+- " _ "
+movesLeft: 9
+

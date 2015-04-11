@@ -28,17 +28,15 @@ module Hangman
 			end
 		end
 
-		def display_board
-			puts "The actual word: #{@chosenWord}"
+		def display_board			
 			puts "Moves Left: #{@movesLeft}"
 			puts "Words Guessed: #{@wordsGuessed}"
 			print wordArray
-			puts ""
+			puts ""			
 		end
 
 		def update_board(input)
-			if(@chosenWord.include?(input))
-				puts "Good Job! You got one of the characters"
+			if(@chosenWord.include?(input))				
 				revealWords(input)
 
 				#there is no more underlines so the user won
@@ -47,8 +45,7 @@ module Hangman
 					@movesLeft == 0
 					exit
 				end
-			else
-				puts "Sorry you didn't get anything"				
+			else							
 				unless @wordsGuessed.include? input
 					@wordsGuessed << input
 				end

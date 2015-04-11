@@ -1,14 +1,16 @@
 require './new_game.rb'
+require 'yaml'
 
+$fileName = "savedGames.yaml"
 class HangmanRunner
 	attr_accessor :board
 	def initialize
 		# 1. get input from user for saved game
 		# 2. Otherwise create a new board
 		# 3. needs a method to validate input
-		# 4. The board should get input
-		@board = Hangman::Board.new
+		# 4. The board should get input		
 		input = validateGameInput
+		
 	end
 
 	#this method validates that the saved game chosen is one that exists
@@ -24,8 +26,9 @@ class HangmanRunner
 			input = gets.chomp.to_i
 
 			case input
-			when 1
+			when 1				
 				continueLoop = false
+				@board = Hangman::Board.new 
 				playGame
 			when 2 
 				continueLoop = false
@@ -41,20 +44,23 @@ class HangmanRunner
 		while(@board.movesLeft > 0) do
 			@board.display_board #display the board which shows
 			
-			puts "Please enter a move:" #ask the user for a move
+			puts "Enter a move or 'save' to save game" #ask the user for a move
 			input = cleanMove(gets.chomp) 
 
 			@board.update_board(input) #update the board with the new board
-
-
-
 		end
+		puts "Shucks you lost"
 	end
 
 	#a cleanMOve
 	def cleanMove(input)
 		#use regex to make sure 
 		aThroughZ = /[a-z]/
+
+		#save the game maybe?
+		if(input == 'save')
+			save(@board)
+		end
 
 		badMove = true;
 		while(badMove)
@@ -68,6 +74,37 @@ class HangmanRunner
 
 		end
 		return input 
+	end
+
+	def save(board)
+		yamlString = YAML::dump(board)
+		f = File.new($fileName, "a")		
+		f.puts yamlString
+		f.puts ""			
+		f.close
+		exit
+	end
+
+	def load(board)
+		
+	end
+ 
+	def playExistingGame		
+		array = []
+		$/="\n\n"
+		File.open($fileName, "r").each do |object|
+  			array << YAML::load(object)
+		end
+			$/="\n"
+		array.each_with_index do |file, index|
+			puts "#{index}. #{file}"			
+		end
+		puts "Please choosing an existing object"		
+		input = gets.chomp.to_i
+		@board = array[input]
+		puts @board.display_board
+		puts @board.movesLeft
+		playGame
 	end
 
 end
@@ -86,7 +123,5 @@ puts "Welcome to Hangman!!!!!!!!!"
 
 		#allow the users to get the game based on the number the user chooses
 		input = gets.chomp.
-		validateGameInput(input)
-
-	
+		validateGameInput(input)	
 =end
